@@ -47,14 +47,18 @@ body {
   }
   
   .navigation-sidebar {
-    position: static !important;
+    position: -webkit-sticky !important; /* iOS Safari */
+    position: sticky !important;
+    top: 60px !important; /* below fixed header */
+    z-index: 9;
     width: 100% !important;
     padding: 16px !important;
     margin-bottom: 0 !important;
     padding-bottom: 24px !important;
     box-sizing: border-box;
-    top: auto !important;
-    left: auto !important;
+    background: #ffffff;
+    left: 0 !important;
+    right: 0 !important;
   }
   
   .main-content {
