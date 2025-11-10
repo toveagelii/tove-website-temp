@@ -19,7 +19,7 @@ body {
 /* Default (desktop) square artwork size */
 .project-artwork {
   width: 200px;
-  height: 200px;
+  aspect-ratio: 1 / 1;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
@@ -93,21 +93,16 @@ body {
   
   .project-artwork {
     width: 150px !important;
-    height: 150px !important;
-    min-width: 150px !important;
-    min-height: 150px !important;
-    max-width: 150px !important;
-    max-height: 150px !important;
+    aspect-ratio: 1 / 1 !important;
     margin-bottom: 12px !important;
     flex-shrink: 0 !important;
-    display: block !important;
+    position: relative !important;
+    overflow: hidden !important;
   }
   
   .project-artwork img {
-    width: 100% !important;
-    height: 100% !important;
     object-fit: cover !important;
-    display: block !important;
+    object-position: center !important;
   }
   
   .score-video {
