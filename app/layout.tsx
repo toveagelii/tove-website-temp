@@ -1,39 +1,74 @@
 import "./globals.css";
 import Link from "next/link";
+import Navigation from "./components/Navigation";
+import { sanityClient } from '@/lib/sanity.client';
+import { homePageQuery } from '@/lib/queries';
+import { urlFor } from '@/lib/image';
+import Image from 'next/image';
 
 export const metadata = {
   title: "Tove Agelii",
   description: "Portfolio",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const homePage = await sanityClient.fetch(homePageQuery).catch(() => null);
+  const headerBgImage = homePage?.headerBackgroundImage;
+
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col">
-        {/* Logo/Header on top */}
-        <header className="p-4">
-          <Link href="/" className="block mb-2">
-            <h1
-              className="font-luminari text-xl tracking-wide hover:opacity-70 transition"
-              style={{ fontFamily: "Luminari, serif" }}
-            >
-              Tove Agelii
-            </h1>
+  <body className="flex min-h-screen flex-col">
+        {/* Logo/Header on top - fixed */}
+        <header className="fixed top-0 left-0 right-0 pt-4 pr-4 pb-2 pl-4 bg-white z-10">
+          <Link href="/" className="inline-block mb-1">
+            <div style={{ position: 'relative', display: 'inline-block', lineHeight: 1 }}>
+              {headerBgImage && (
+                <Image
+                  src={urlFor(headerBgImage).url()}
+                  alt=""
+                  fill
+                  style={{
+                    objectFit: 'fill',
+                    objectPosition: 'center',
+                    zIndex: 0,
+                    top: '-2px',
+                    left: '1px'
+                  }}
+                  priority
+                  sizes="400px"
+                />
+              )}
+              <h1
+                className="text-3xl tracking-tight"
+                style={{ 
+                  fontFamily: "'Neue Haas Grotesk', sans-serif", 
+                  fontWeight: 500,
+                  color: 'var(--foreground)', 
+                  fontSize: '1.5rem', 
+                  letterSpacing: '-0.02em',
+                  position: 'relative',
+                  zIndex: 1,
+                  margin: 0,
+                  padding: 0,
+                  lineHeight: 1,
+                  display: 'block'
+                }}
+              >
+                Tove Agelii
+              </h1>
+            </div>
           </Link>
         </header>
 
-        <div className="flex flex-1">
-          {/* Sidebar Menu */}
-          <aside className="w-64 p-4">
-            <nav className="flex flex-col gap-2 text-sm font-helvetica">
-              <Link href="/discography">Discography</Link>
-              <Link href="/score">Score & Sound</Link>
-              <Link href="/contact">Contact</Link>
-            </nav>
+        {/* Add top padding to body content to account for fixed header */}
+        <div className="flex flex-1" style={{ paddingTop: '60px' }}>
+          {/* Sidebar Menu - fixed */}
+          <aside className="fixed left-0 w-64" style={{ top: '60px', paddingLeft: '16px', paddingRight: '16px', paddingBottom: '16px' }}>
+            <Navigation />
           </aside>
 
-          {/* Main content area */}
-          <main className="flex-1 pt-8 pl-4">{children}</main>
+          {/* Main content area - add left margin to account for fixed sidebar */}
+          <main className="flex-1 pl-4" style={{ marginLeft: '256px' }}>{children}</main>
         </div>
       </body>
     </html>

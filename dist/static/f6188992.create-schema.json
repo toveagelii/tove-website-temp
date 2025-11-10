@@ -1,0 +1,499 @@
+[
+  {
+    "fields": [
+      {
+        "initialValue": true,
+        "description": "Toggle to show/hide this project on the website",
+        "name": "published",
+        "type": "boolean"
+      },
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "description": "Optional short description under the title, e.g., Original Film Score or Runway Score",
+        "name": "subtitle",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Click Generate to create a URL-friendly slug from the title",
+        "name": "slug",
+        "type": "slug",
+        "title": "URL Slug"
+      },
+      {
+        "name": "year",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "artwork",
+        "type": "image"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Discography",
+              "value": "discography"
+            },
+            {
+              "title": "Score & Sound",
+              "value": "score"
+            }
+          ],
+          "layout": "radio"
+        },
+        "name": "category",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "YouTube Video",
+              "value": "youtube"
+            },
+            {
+              "title": "Streaming Link",
+              "value": "streaming"
+            },
+            {
+              "title": "Image",
+              "value": "image"
+            },
+            {
+              "title": "Uploaded Video",
+              "value": "uploadedVideo"
+            }
+          ],
+          "layout": "radio"
+        },
+        "name": "mediaType",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "YouTube video URL, streaming service link. Leave empty if using an image or uploaded video.",
+        "name": "mediaUrl",
+        "type": "url",
+        "title": "Media URL"
+      },
+      {
+        "options": {
+          "accept": "video/*"
+        },
+        "description": "Upload a short video (e.g., MP4/WebM). Keep it short to improve performance.",
+        "hidden": "conditional",
+        "name": "videoFile",
+        "type": "file",
+        "title": "Uploaded Video"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Optional image shown before playback.",
+        "hidden": "conditional",
+        "name": "videoPoster",
+        "type": "image",
+        "title": "Video Poster (Thumbnail)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Upload an image if Media Type is set to 'Image', or leave empty if using YouTube/streaming",
+        "name": "mediaImage",
+        "type": "image"
+      },
+      {
+        "rows": 4,
+        "description": "Write a detailed description of the project",
+        "name": "description",
+        "type": "text",
+        "title": "Project Description"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Add a Spotify link (optional)",
+        "name": "spotifyLink",
+        "type": "url"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Add a Bandcamp link (optional)",
+        "name": "bandcampLink",
+        "type": "url"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Add a YouTube link (optional)",
+        "name": "youtubeLink",
+        "type": "url",
+        "title": "YouTube Link"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Add a website link (optional)",
+        "name": "websiteLink",
+        "type": "url"
+      }
+    ],
+    "name": "project",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "description": "Add email addresses with optional labels/descriptions.",
+        "of": [
+          {
+            "fields": [
+              {
+                "description": "e.g., 'For inquiries & commissions:', 'EU booking:', 'USA booking:'",
+                "name": "label",
+                "type": "string",
+                "title": "Label/Description"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "email",
+                "type": "string",
+                "title": "Email Address"
+              },
+              {
+                "initialValue": false,
+                "description": "Enable to show this label above the email in black at normal size. Leave off to hide the label.",
+                "name": "primary",
+                "type": "boolean",
+                "title": "Primary label (black, normal size)"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "emails",
+        "type": "array",
+        "title": "Email Addresses"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Full Instagram profile link (e.g., https://www.instagram.com/_toxe_/).",
+        "name": "instagramUrl",
+        "type": "url",
+        "title": "Instagram URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Full YouTube channel link.",
+        "name": "youtubeUrl",
+        "type": "url",
+        "title": "YouTube URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Full Spotify artist link.",
+        "name": "spotifyUrl",
+        "type": "url",
+        "title": "Spotify URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Full SoundCloud profile link.",
+        "name": "soundcloudUrl",
+        "type": "url",
+        "title": "SoundCloud URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Full Bandcamp artist link.",
+        "name": "bandcampUrl",
+        "type": "url",
+        "title": "Bandcamp URL"
+      }
+    ],
+    "name": "contactPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              },
+              {
+                "flag": "max",
+                "constraint": 120
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "homeTitle",
+        "type": "string",
+        "title": "Homepage Title"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 200
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "homeSubtitle",
+        "type": "string",
+        "title": "Homepage Subtitle"
+      },
+      {
+        "rows": 6,
+        "description": "Longer intro/about content displayed on the homepage.",
+        "name": "homeIntro",
+        "type": "text",
+        "title": "Homepage Intro/About Text"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document"
+  }
+]
