@@ -9,6 +9,7 @@ import Image from 'next/image';
 export const metadata = {
   title: "Tove Agelii",
   description: "Portfolio",
+  metadataBase: new URL('https://toveagelii.com'),
 };
 
 export const viewport = {
