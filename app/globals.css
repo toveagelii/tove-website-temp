@@ -17,6 +17,13 @@ body {
 }
 
 /* Default (desktop) square artwork size */
+.project-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  column-gap: 20px;
+  align-items: start;
+}
+
 .project-artwork {
   width: 200px;
   aspect-ratio: 1 / 1;
@@ -87,8 +94,8 @@ body {
   }
   
   .project-item {
-    flex-direction: column !important;
-    align-items: flex-start !important;
+    grid-template-columns: 1fr !important;
+    row-gap: 12px !important;
   }
   
   .project-artwork {
@@ -98,6 +105,7 @@ body {
     flex-shrink: 0 !important;
     position: relative !important;
     overflow: hidden !important;
+    justify-self: start !important;
   }
   
   .project-artwork img {
