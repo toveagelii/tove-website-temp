@@ -46,7 +46,7 @@ export default async function ProjectDetailPage({
             alt={project.title}
             width={500}
             height={500}
-            style={{ display: "block" }}
+            style={{ display: "block", maxWidth: "100%", height: "auto" }}
           />
         </div>
       )}

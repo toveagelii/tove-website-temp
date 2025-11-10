@@ -43,7 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 style={{ 
                   fontFamily: "'Neue Haas Grotesk', sans-serif", 
                   fontWeight: 500,
-                  color: 'var(--foreground)', 
+                  color: '#171717',
                   fontSize: '1.5rem', 
                   letterSpacing: '-0.02em',
                   position: 'relative',
@@ -62,14 +62,41 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
         {/* Add top padding to body content to account for fixed header */}
         <div className="flex flex-1" style={{ paddingTop: '60px' }}>
-          {/* Sidebar Menu - fixed */}
-          <aside className="fixed left-0 w-64" style={{ top: '60px', paddingLeft: '16px', paddingRight: '16px', paddingBottom: '16px' }}>
+          {/* Sidebar Menu - responsive */}
+          <aside 
+            className="navigation-sidebar"
+            style={{ 
+              position: 'fixed',
+              left: 0,
+              top: '60px',
+              paddingLeft: '16px', 
+              paddingRight: '16px', 
+              paddingBottom: '16px',
+              width: '256px'
+            }}
+          >
             <Navigation />
           </aside>
 
-          {/* Main content area - add left margin to account for fixed sidebar */}
-          <main className="flex-1 pl-4" style={{ marginLeft: '256px' }}>{children}</main>
+          {/* Main content area - responsive margins */}
+          <main className="main-content" style={{ flex: 1, paddingLeft: '16px', marginLeft: '256px' }}>{children}</main>
         </div>
+        
+        <style jsx global>{`
+          @media (max-width: 768px) {
+            .navigation-sidebar {
+              position: static !important;
+              width: 100% !important;
+              padding: 16px !important;
+              margin-bottom: 20px;
+            }
+            .main-content {
+              margin-left: 0 !important;
+              padding-left: 16px !important;
+              padding-right: 16px !important;
+            }
+          }
+        `}</style>
       </body>
     </html>
   );

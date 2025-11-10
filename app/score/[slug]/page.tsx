@@ -55,8 +55,11 @@ export default async function ProjectDetailPage({
                   key={index}
                   controls
                   poster={thumbnailUrl}
+                  className="score-video"
                   style={{
                     width: "500px",
+                    maxWidth: "100%",
+                    height: "auto",
                     display: "block",
                   }}
                 >
@@ -80,9 +83,11 @@ export default async function ProjectDetailPage({
               return (
                 <div
                   key={index}
+                  className="youtube-container"
                   style={{
                     position: "relative",
                     width: "500px",
+                    maxWidth: "100%",
                     paddingBottom: "281.25px", // 16:9 aspect ratio for 500px width (500 * 9/16 = 281.25)
                     height: 0,
                     overflow: "hidden",
@@ -111,6 +116,7 @@ export default async function ProjectDetailPage({
 
       {/* Project Title */}
       <h1
+        className="score-text-content"
         style={{
           fontSize: "13px",
           fontFamily: "'Neue Haas Grotesk', sans-serif",
@@ -124,6 +130,7 @@ export default async function ProjectDetailPage({
       {/* Subtitle */}
       {project.subtitle && (
         <p
+          className="score-text-content"
           style={{
             fontSize: "11px",
             color: "#666",
@@ -139,6 +146,7 @@ export default async function ProjectDetailPage({
       {/* Description */}
       {project.description && (
         <p
+          className="score-text-content"
           style={{
             fontSize: "11px", // match subtitle size
             fontFamily: "'Neue Haas Grotesk', sans-serif",
@@ -161,6 +169,7 @@ export default async function ProjectDetailPage({
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
+              className="score-text-content"
               style={{
                 fontSize: "11px",
                 textDecoration: "underline",
@@ -173,6 +182,22 @@ export default async function ProjectDetailPage({
           ))}
         </div>
       )}
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .score-video {
+            width: 100% !important;
+          }
+          
+          .youtube-container {
+            width: 100% !important;
+          }
+          
+          .score-text-content {
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
