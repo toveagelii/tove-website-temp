@@ -182,22 +182,6 @@ export default async function ProjectDetailPage({
           ))}
         </div>
       )}
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .score-video {
-            width: 100% !important;
-          }
-          
-          .youtube-container {
-            width: 100% !important;
-          }
-          
-          .score-text-content {
-            max-width: 100% !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }

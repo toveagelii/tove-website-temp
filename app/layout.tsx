@@ -81,22 +81,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {/* Main content area - responsive margins */}
           <main className="main-content" style={{ flex: 1, paddingLeft: '16px', marginLeft: '256px' }}>{children}</main>
         </div>
-        
-        <style jsx global>{`
-          @media (max-width: 768px) {
-            .navigation-sidebar {
-              position: static !important;
-              width: 100% !important;
-              padding: 16px !important;
-              margin-bottom: 20px;
-            }
-            .main-content {
-              margin-left: 0 !important;
-              padding-left: 16px !important;
-              padding-right: 16px !important;
-            }
-          }
-        `}</style>
       </body>
     </html>
   );
