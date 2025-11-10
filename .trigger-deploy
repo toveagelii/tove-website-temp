@@ -1,0 +1,2 @@
+// Force commit trigger
+console.log('Dynamic rendering enabled');
