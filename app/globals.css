@@ -35,7 +35,6 @@ body {
 @media (max-width: 768px) {
   * {
     box-sizing: border-box;
-    max-width: 100%;
   }
   
   html {
@@ -99,9 +98,16 @@ body {
     min-height: 150px !important;
     max-width: 150px !important;
     max-height: 150px !important;
-    margin-bottom: 12px;
+    margin-bottom: 12px !important;
     flex-shrink: 0 !important;
-    background: transparent !important;
+    background: #ff0000 !important;
+    display: block !important;
+  }
+  
+  .project-artwork img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
   
   .score-video {
