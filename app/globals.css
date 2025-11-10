@@ -26,7 +26,7 @@ body {
 
 .project-artwork {
   width: 200px;
-  aspect-ratio: 1 / 1;
+  height: 200px;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
@@ -100,7 +100,7 @@ body {
   
   .project-artwork {
     width: 150px !important;
-    aspect-ratio: 1 / 1 !important;
+    height: 150px !important;
     margin-bottom: 12px !important;
     flex-shrink: 0 !important;
     position: relative !important;
