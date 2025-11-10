@@ -20,6 +20,15 @@ body {
 .project-artwork {
   width: 200px;
   height: 200px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.project-artwork img {
+  object-fit: cover !important;
+  object-position: center !important;
 }
 
 /* Mobile responsive styles */
@@ -86,8 +95,13 @@ body {
   .project-artwork {
     width: 150px !important;
     height: 150px !important;
+    min-width: 150px !important;
+    min-height: 150px !important;
+    max-width: 150px !important;
+    max-height: 150px !important;
     margin-bottom: 12px;
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
+    background: transparent !important;
   }
   
   .score-video {
