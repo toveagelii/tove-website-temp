@@ -16,6 +16,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Default (desktop) square artwork size */
+.project-artwork {
+  width: 200px;
+  height: 200px;
+}
+
 /* Mobile responsive styles */
 @media (max-width: 768px) {
   * {
