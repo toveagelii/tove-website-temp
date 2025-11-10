@@ -5,7 +5,6 @@ import { sanityClient } from '@/lib/sanity.client';
 import { homePageQuery } from '@/lib/queries';
 import { urlFor } from '@/lib/image';
 import Image from 'next/image';
-import { SanityLive } from '@/sanity/lib/live';
 
 export const metadata = {
   title: "Tove Agelii",
@@ -89,7 +88,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {/* Main content area - responsive margins */}
           <main className="main-content" style={{ flex: 1, paddingLeft: '16px', marginLeft: '256px' }}>{children}</main>
         </div>
-        <SanityLive />
       </body>
     </html>
   );
