@@ -100,7 +100,6 @@ body {
     max-height: 150px !important;
     margin-bottom: 12px !important;
     flex-shrink: 0 !important;
-    background: #ff0000 !important;
     display: block !important;
   }
   
@@ -108,6 +107,7 @@ body {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
+    display: block !important;
   }
   
   .score-video {
