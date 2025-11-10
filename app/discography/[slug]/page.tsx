@@ -37,7 +37,7 @@ export default async function ProjectDetailPage({
   }
 
   return (
-    <div style={{ paddingTop: 0, paddingRight: "20px", maxWidth: "800px" }}>
+    <div style={{ paddingTop: 0, paddingRight: "20px", maxWidth: "800px", width: "100%", overflowX: "hidden" }}>
       {/* Artwork */}
       {project.artwork && (
         <div style={{ marginBottom: "20px" }}>

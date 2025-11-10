@@ -37,7 +37,7 @@ export default async function ProjectDetailPage({
   }
 
   return (
-    <div style={{ paddingTop: 0, paddingRight: "20px", maxWidth: "800px" }}>
+    <div style={{ paddingTop: 0, paddingRight: "20px", maxWidth: "800px", width: "100%", overflowX: "hidden" }}>
       {/* Uploaded Videos Section */}
       {project.videos && project.videos.length > 0 && (
         <div style={{ marginBottom: "24px" }}>

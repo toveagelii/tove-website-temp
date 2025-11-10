@@ -61,7 +61,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </header>
 
         {/* Add top padding to body content to account for fixed header */}
-        <div className="flex flex-1" style={{ paddingTop: '60px' }}>
+        <div className="layout-container" style={{ paddingTop: '60px', display: 'flex', flex: 1 }}>
           {/* Sidebar Menu - responsive */}
           <aside 
             className="navigation-sidebar"
