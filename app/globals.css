@@ -1,3 +1,6 @@
+html {
+  overflow-x: hidden;
+}
 /* Detail page artwork container: desktop-like layout, responsive for mobile */
 .project-artwork-detail {
     width: 100%;
@@ -78,8 +81,8 @@
 
 /* Desktop: fallback square artwork container */
 .project-artwork-simple {
-  width: 100px;
-  height: 100px;
+  width: 44vw;
+  height: 44vw;
   font-family: 'Neue Haas Grotesk', Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-family: 'Neue Haas Grotesk', Arial, Helvetica, sans-serif;
@@ -89,6 +92,7 @@
   line-height: 0;
   background: none;
   margin: 0 auto;
+}
 .project-artwork-simple img {
   display: block;
   width: 100%;
