@@ -64,14 +64,11 @@
   .project-artwork-simple {
     width: 100vw !important;
     max-width: 150px !important;
-    height: auto !important;
     aspect-ratio: 1 / 1 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: block !important;
     overflow: hidden !important;
     position: relative !important;
-    background: #eee !important;
+    background: none !important;
     margin: 0 auto !important;
   }
   .project-artwork-simple img {
@@ -80,8 +77,7 @@
     object-fit: cover !important;
     object-position: center !important;
     aspect-ratio: 1 / 1 !important;
-    position: absolute !important;
-    top: 0; left: 0;
+    display: block !important;
     margin: 0 !important;
     padding: 0 !important;
     border: none !important;
