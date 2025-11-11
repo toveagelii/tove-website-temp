@@ -52,8 +52,10 @@
   }
   
   .project-item {
-    grid-template-columns: 1fr !important;
-    row-gap: 12px !important;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
   }
   
   .project-artwork {
