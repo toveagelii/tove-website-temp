@@ -13,7 +13,7 @@ export default function Navigation() {
 	const pathname = usePathname();
 		return (
 		<nav>
-			<div style={{ display: "flex", flexDirection: "column" }}>
+			<div className="navigation-list">
 			{navItems.map((item, idx) => {
 				const active = pathname === item.href || (item.href !== "/" && pathname?.startsWith(item.href));
 				return (

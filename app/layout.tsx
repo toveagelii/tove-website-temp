@@ -68,25 +68,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </header>
 
         {/* Add top padding to body content to account for fixed header */}
-        <div className="layout-container" style={{ paddingTop: '60px', display: 'flex', flex: 1 }}>
+        <div className="layout-container">
           {/* Sidebar Menu - responsive */}
           <aside 
             className="navigation-sidebar"
-            style={{ 
-              position: 'fixed',
-              left: 0,
-              top: '60px',
-              paddingLeft: '16px', 
-              paddingRight: '16px', 
-              paddingBottom: '16px',
-              width: '256px'
-            }}
           >
             <Navigation />
           </aside>
 
           {/* Main content area - responsive margins */}
-          <main className="main-content" style={{ flex: 1, paddingLeft: '16px', marginLeft: '256px' }}>{children}</main>
+          <main className="main-content">{children}</main>
         </div>
       </body>
     </html>
