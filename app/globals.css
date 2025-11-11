@@ -147,6 +147,9 @@ body {
     width: 100vw;
     max-width: 100vw;
     box-sizing: border-box;
+    padding-top: 8px !important;
+    padding-bottom: 4px !important;
+    font-size: 1.1rem !important;
   }
   
   .layout-container {
