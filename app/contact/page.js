@@ -7,7 +7,7 @@ export default async function ContactPage() {
 
   const emails = Array.isArray(data?.emails) ? data.emails : [];
   return (
-    <div style={{ paddingTop: 0, paddingRight: '20px' }}>
+    <div className="contact-container">
       {/* Render all emails from Sanity */}
       {emails.length > 0 && emails.map((item, idx) => (
         <div key={idx} style={{ marginBottom: '16px' }}>
