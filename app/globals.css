@@ -1,3 +1,29 @@
+/* Detail page artwork container: desktop-like layout, responsive for mobile */
+.project-artwork-detail {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.project-artwork-detail img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1 / 1;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+@media (max-width: 768px) {
+  .project-artwork-detail {
+    max-width: 90vw;
+    width: 100vw;
+  }
+}
 @media (max-width: 768px) {
   .layout-container {
     display: block !important;
