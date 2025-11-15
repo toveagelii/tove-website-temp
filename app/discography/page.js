@@ -7,15 +7,15 @@ import Link from "next/link";
 const ProjectContent = ({ project, isClickable }) => {
   return (
     <div
+      className={isClickable ? "hover:opacity-80" : ""}
       style={{
         display: "flex",
         alignItems: "flex-start",
         gap: "20px",
-        marginBottom: "80px",
+        marginBottom: "20px",
         cursor: isClickable ? "pointer" : "default",
         transition: "opacity 0.2s ease",
       }}
-      className={isClickable ? "hover:opacity-80" : ""}
     >
       <div
         style={{
@@ -59,7 +59,7 @@ export default async function DiscographyPage() {
   const projects = await sanityClient.fetch(discographyProjectsQuery);
 
   return (
-    <div style={{ paddingTop: 0, paddingRight: "20px" }}>
+  <div className="content-aligned" style={{ paddingBottom: '35px' }}>
       {projects.map((project) => {
         if (!project.slug || !project.slug.current) {
           return (

@@ -24,9 +24,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-  <body className="flex min-h-screen flex-col">
-        {/* Logo/Header on top - fixed */}
-        <header className="fixed top-0 left-0 right-0 pt-4 pr-4 pb-2 pl-4 bg-white z-10">
+      <body className="flex min-h-screen flex-col">
+        <header className="sticky-header pt-0 pr-8 pb-2 pl-[20px] bg-white z-10">
           <Link href="/" className="inline-block mb-1">
             <div style={{ position: 'relative', display: 'inline-block', lineHeight: 1 }}>
               {headerBgImage && (
@@ -66,17 +65,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </div>
           </Link>
         </header>
-
-        {/* Add top padding to body content to account for fixed header */}
         <div className="layout-container">
-          {/* Sidebar Menu - responsive */}
-          <aside 
-            className="navigation-sidebar"
-          >
+          <aside className="navigation-sidebar">
             <Navigation />
           </aside>
-
-          {/* Main content area - responsive margins */}
+          {/* Removed vertical divider, keep two-column layout */}
           <main className="main-content">{children}</main>
         </div>
       </body>

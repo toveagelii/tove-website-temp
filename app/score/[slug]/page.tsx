@@ -33,11 +33,12 @@ export default async function ProjectDetailPage({
   const project = await sanityClient.fetch(projectBySlugQuery(slug));
 
   if (!project) {
-    return <div style={{ padding: "20px" }}>Project not found</div>;
+    return <div className="project-not-found">Project not found</div>;
   }
 
   return (
-    <div style={{ paddingTop: 0, paddingRight: "20px", maxWidth: "800px", width: "100%", overflowX: "hidden" }}>
+    <div className="content-aligned project-detail-container">
+      {/* No artwork at top, only video */}
       {/* Uploaded Videos Section */}
       {project.videos && project.videos.length > 0 && (
         <div style={{ marginBottom: "24px" }}>
@@ -119,7 +120,8 @@ export default async function ProjectDetailPage({
         className="score-text-content"
         style={{
           fontSize: "13px",
-          fontFamily: "'Neue Haas Grotesk', sans-serif",
+          fontFamily: "'Neue Haas Grotesk Display Pro 45 Light', Arial, Helvetica, sans-serif",
+          fontWeight: 300,
           marginBottom: "8px",
           maxWidth: "500px",
         }}
@@ -135,7 +137,8 @@ export default async function ProjectDetailPage({
             fontSize: "11px",
             color: "#666",
             marginBottom: "16px",
-            fontFamily: "'Neue Haas Grotesk', sans-serif",
+            fontFamily: "'Neue Haas Grotesk Display Pro 45 Light', Arial, Helvetica, sans-serif",
+            fontWeight: 300,
             maxWidth: "500px",
           }}
         >
@@ -149,7 +152,8 @@ export default async function ProjectDetailPage({
           className="score-text-content"
           style={{
             fontSize: "11px", // match subtitle size
-            fontFamily: "'Neue Haas Grotesk', sans-serif",
+            fontFamily: 'Arial, Helvetica, sans-serif',
+            color: "#666",
             lineHeight: "1.6",
             marginBottom: "32px",
             whiteSpace: "pre-wrap",

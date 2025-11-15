@@ -37,38 +37,44 @@ export default async function ProjectDetailPage({
   }
 
   return (
-  <div className="discography-project-detail">
-      {/* Artwork */}
+    <div className="content-aligned discography-project-detail" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: 0 }}>
+      {/* Artwork left-aligned above text */}
       {project.artwork && (
-        <div className="project-artwork-simple">
+        <div className="project-artwork-simple" style={{ marginBottom: '16px', marginLeft: 0, width: '600px', height: '600px' }}>
           <Image
-            src={urlFor(project.artwork).width(800).height(800).auto("format").url()}
+            src={urlFor(project.artwork).auto("format").url()}
             alt={project.title}
             className="project-artwork-img"
+            width={600}
+            height={600}
             priority
           />
         </div>
       )}
+      {/* All text below artwork, left-aligned, menu font/size */}
+      <div style={{ width: '600px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+  <div style={{ fontSize: '12px', fontFamily: "'Neue Haas Grotesk Display Pro 45 Light', Arial, Helvetica, sans-serif", fontWeight: 300, margin: 0, marginBottom: '4px', color: '#171717' }}>{project.title}</div>
+        {project.subtitle && (
+          <div style={{ fontSize: '11px', color: '#666', margin: 0, marginBottom: '4px', fontFamily: "'Neue Haas Grotesk Display Pro 45 Light', Arial, Helvetica, sans-serif", fontWeight: 300 }}>{project.subtitle}</div>
+        )}
+  <div style={{ fontSize: '10px', color: '#555', margin: 0, marginBottom: '8px', fontFamily: "'Neue Haas Grotesk Display Pro 45 Light', Arial, Helvetica, sans-serif", fontWeight: 300 }}>{project.year}</div>
+      </div>
 
-      {/* Project Title */}
-      <h1 className="project-title">{project.title}</h1>
-
-      {/* Subtitle */}
-      {project.subtitle && (
-        <p className="project-subtitle">{project.subtitle}</p>
-      )}
-
-      {/* Year */}
-      <p className="project-year">{project.year}</p>
+  {/* Year is now styled above, remove duplicate */}
 
       {/* Description */}
       {project.description && (
-        <p className="project-description">{project.description}</p>
+        <div
+          className="project-description"
+          style={{ width: '600px', fontSize: '11px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 400, color: '#666', margin: '0 auto 24px auto', whiteSpace: 'pre-line', display: 'block' }}
+        >
+          {project.description}
+        </div>
       )}
 
       {/* Links */}
       {project.links && project.links.length > 0 && (
-        <div className="project-links">
+        <div className="project-links" style={{ width: '600px', display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '24px' }}>
           {project.links.map((link: { title: string; url: string }, index: number) => (
             <a
               key={index}
@@ -76,6 +82,15 @@ export default async function ProjectDetailPage({
               target="_blank"
               rel="noopener noreferrer"
               className="project-link"
+              style={{
+                fontSize: '11px',
+                color: '#666',
+                textDecoration: 'underline',
+                fontFamily: 'Arial, Helvetica, sans-serif',
+                fontWeight: 400,
+                display: 'block',
+                width: '100%'
+              }}
             >
               {link.title || link.url}
             </a>
@@ -85,14 +100,14 @@ export default async function ProjectDetailPage({
 
       {/* YouTube Videos Section */}
       {project.youtubeVideos && project.youtubeVideos.length > 0 && (
-        <div className="project-videos">
-          <div className="project-videos-list">
+        <div className="project-videos" style={{ width: '600px', marginBottom: '24px' }}>
+          <div className="project-videos-list" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {project.youtubeVideos.map((video: { url: string }, index: number) => {
               const embedUrl = getYouTubeEmbedUrl(video.url);
               if (!embedUrl) return null;
 
               return (
-                <div key={index} className="project-video-container">
+                <div key={index} className="project-video-container" style={{ width: '600px', height: '338px', position: 'relative' }}>
                   <iframe
                     src={embedUrl}
                     title={`YouTube video ${index + 1}`}
@@ -100,6 +115,7 @@ export default async function ProjectDetailPage({
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="project-video-iframe"
+                    style={{ width: '600px', height: '338px', display: 'block' }}
                   />
                 </div>
               );

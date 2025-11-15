@@ -1,96 +1,120 @@
-html {
-  overflow-x: hidden;
-/* Detail page artwork container: desktop-like layout, responsive for mobile */
-.project-artwork-detail {
-    width: 100%;
-  }
-  
-  body {
-    width: 100vw;
-    overflow-x: hidden;
-    position: relative;
-    --artwork-size: 150px;
-  }
-  
-  header {
-    width: 100vw;
-    max-width: 100vw;
-    box-sizing: border-box;
-    padding-top: 8px !important;
-    padding-bottom: 4px !important;
-    font-size: 1.1rem !important;
-  }
-  
-  .layout-container {
-    flex-direction: column !important;
-    width: 100%;
-    padding-top: 60px !important;
-  }
-  
-  .navigation-sidebar {
-    position: -webkit-sticky !important; /* iOS Safari */
-    position: sticky !important;
-    top: 60px !important; /* below fixed header */
-    z-index: 9;
-    width: 100% !important;
-    padding: 16px !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 24px !important;
-    box-sizing: border-box;
-    background: #ffffff;
-    left: 0 !important;
-    right: 0 !important;
-  }
-  
-  .main-content {
-    margin-left: 0 !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    padding-top: 32px !important;
-    width: 100%;
-    max-width: 100vw;
-    box-sizing: border-box;
-    overflow-x: hidden;
-  }
-  
-  .project-item {
+/* Only underline and grey for project detail links */
+.project-links a, .project-description a {
+  color: #666 !important;
+  text-decoration: underline !important;
+}
+
+/* Menu links and project list titles stay black, no underline */
+.navigation-list a, .project-title, .discography-project-detail .project-title {
+  color: #171717 !important;
+  text-decoration: none !important;
+}
+* {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: 400;
+}
+/* Force menu font for navigation-list */
+.navigation-list {
+}
+html, body {
+  height: 100vh;
+  overflow: hidden;
+}
+/* Ensure sticky sidebar sticks to top of layout container */
+.layout-container {
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
+}
+/* Two-column layout container */
+.layout-container {
   display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-  }
-  
-  .project-artwork {
-    width: 150px !important;
-    height: 150px !important;
-    margin-bottom: 12px !important;
-    flex-shrink: 0 !important;
-    position: relative !important;
-    overflow: hidden !important;
-    justify-self: start !important;
-  }
-  
-  .project-artwork img {
-    object-fit: cover !important;
-    object-position: center !important;
-  }
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
 
-  
-/* Desktop artwork container - keep desktop look */
+/* Vertical divider between sidebar and main content */
+.vertical-divider {
+  width: 1px;
+  background: #e5e5e5;
+  min-height: 100vh;
+  margin: 0 0 0 0;
+  align-self: stretch;
+}
+.sticky-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: #fff;
+  padding: 0 0 12px 0;
+}
+.main-content {
+  /* flex: 1 removed to prevent extra height and scrolling */
+  padding-left: 0;
+  margin-left: 120px;
+  max-width: 700px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+/* Ensure all pages start content flush with the top */
+.main-content > *:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.content-aligned > *:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+/* Shared content alignment for all main pages */
+.content-aligned {
+  width: 100%;
+  max-width: 700px;
+  margin-left: 0;
+  margin-right: auto;
+  padding-right: 20px;
+  box-sizing: border-box;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro Light';
+  src: url('/fonts/neue-haas-grotesk-display-pro-45-light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro Medium';
+  src: url('/fonts/neue-haas-grotesk-display-pro-65-medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
-/* Desktop: fallback square artwork container */
+body, html, .navigation-sidebar, .main-content, .project-artwork-simple, .project-title, .project-subtitle, .project-year, .contact-container, .score-text-content, .project-artwork-detail, .project-artwork-img, .project-item, .menu, .menu-item {
+}
+
+/* Exclude header from global font override */
+.sticky-header h1, .sticky-header {
+}
 .project-artwork-simple {
-  width: 40vw;
-  height: 40vw;
-  font-family: 'Neue Haas Grotesk', Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  font-family: 'Neue Haas Grotesk', Arial, Helvetica, sans-serif;
+  width: 150px;
+  height: 150px;
   font-size: 14px;
   overflow: hidden;
   flex-shrink: 0;
   line-height: 0;
   background: none;
   margin: 0 auto;
+}
+
 .project-artwork-simple img {
   display: block;
   width: 100%;
@@ -103,51 +127,34 @@ html {
   border: none;
 }
 
-/* Mobile: force perfect squares, loaded last */
-@media (max-width: 768px) {
-  .project-artwork-simple {
-    width: 100vw !important;
-    max-width: 150px !important;
-    aspect-ratio: 1 / 1 !important;
-    display: block !important;
-    overflow: hidden !important;
-    position: relative !important;
-    background: none !important;
-    margin: 0 auto !important;
-    height: auto !important;
-  }
-  .project-artwork-simple img {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 1 / 1 !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-  }
+.score-text-content {
+  max-width: 100% !important;
 }
-  
-  .score-video {
-    width: 100% !important;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .youtube-container {
-    width: 100% !important;
-    max-width: 100%;
-  }
-  
-  .score-text-content {
-    max-width: 100% !important;
-  }
-  
-  .score-video img,
-  .score-video video,
-  .youtube-container iframe {
-    max-width: 100%;
-    height: auto;
-  }
+
+.score-video img,
+.score-video video,
+.youtube-container iframe {
+  max-width: 100%;
+  height: auto;
+}
+.contact-container, .content-aligned, .home-content {
+  color: var(--foreground);
+}
+body.flex.min-h-screen.flex-col {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.navigation-sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  background: #fff;
+  width: 120px;
+  min-width: 100px;
+  max-width: 140px;
+  margin-bottom: 0;
+  padding-left: 0;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }

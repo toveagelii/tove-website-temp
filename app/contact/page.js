@@ -7,12 +7,12 @@ export default async function ContactPage() {
 
   const emails = Array.isArray(data?.emails) ? data.emails : [];
   return (
-    <div className="contact-container">
+    <div className="content-aligned contact-container">
       {/* Render all emails from Sanity */}
       {emails.length > 0 && emails.map((item, idx) => (
         <div key={idx} style={{ marginBottom: '16px' }}>
           {item.label ? (
-            <p style={{ marginBottom: '4px', fontSize: '12px', color: 'var(--foreground)', fontFamily: "'Neue Haas Grotesk', sans-serif" }}>
+            <p style={{ margin: 0, fontSize: '12px', color: 'var(--foreground)', fontFamily: "'Neue Haas Grotesk', sans-serif" }}>
               {item.label}
             </p>
           ) : null}

@@ -14,7 +14,7 @@ export default async function HomePage() {
   const bandcampHref = homePage?.bandcampUrl || '';
 
   return (
-    <div style={{ paddingTop: 0, paddingRight: '20px' }}>
+    <div className="content-aligned">
       {intro && (
         <>
           <p
@@ -22,7 +22,7 @@ export default async function HomePage() {
               fontFamily: "'Neue Haas Grotesk', sans-serif",
               fontSize: '12px',
               color: 'var(--foreground)',
-              marginBottom: 0,
+              margin: 0,
             }}
           >
             {intro}
@@ -46,7 +46,7 @@ export default async function HomePage() {
       )}
 
       {/* Social links from Sanity (now on Home page) */}
-      <div style={{ marginTop: '24px' }}>
+      <div style={{ marginTop: 0 }}>
         {instagramHref && (
           <a
             href={instagramHref}

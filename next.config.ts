@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
         hostname: "cdn.sanity.io",
       },
     ],
+    // Adding allowed image qualities
+    qualities: [70, 75],
   },
 };
 

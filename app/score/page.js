@@ -11,7 +11,7 @@ const ProjectContent = ({ project, isClickable }) => {
         display: "flex",
         alignItems: "flex-start",
         gap: "20px",
-        marginBottom: "80px",
+        marginBottom: "20px",
         cursor: isClickable ? "pointer" : "default",
         transition: "opacity 0.2s ease",
       }}
@@ -39,7 +39,7 @@ const ProjectContent = ({ project, isClickable }) => {
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
-        <div style={{ fontSize: "12px", fontFamily: "'Neue Haas Grotesk', sans-serif" }}>
+        <div style={{ fontSize: "12px", fontFamily: "'Neue Haas Grotesk', sans-serif", marginTop: 0 }}>
           {project.title}
         </div>
         {project.subtitle && (
@@ -59,7 +59,7 @@ export default async function ScorePage() {
   const projects = await sanityClient.fetch(scoreProjectsQuery);
 
   return (
-    <div style={{ paddingTop: 0, paddingRight: "20px" }}>
+  <div className="content-aligned" style={{ paddingBottom: '35px' }}>
       {projects.map((project) => {
         if (!project.slug || !project.slug.current) {
           return (
