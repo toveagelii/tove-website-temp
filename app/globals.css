@@ -1,3 +1,59 @@
+
+html, body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+
+/* Desktop (default) video and iframe sizing for project detail pages */
+.project-video-container {
+  width: 600px;
+  height: 338px;
+  max-width: 100%;
+  margin: 0 0 24px 0;
+  display: block;
+}
+.project-video-iframe {
+  width: 100%;
+  height: 338px;
+  display: block;
+  border: none;
+}
+.score-video {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Desktop project detail images: 600x600px */
+.project-artwork-img {
+  width: 600px;
+  height: 600px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Desktop project detail images: 600x600px */
+.project-artwork-simple img {
+  width: 600px;
+  height: 600px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
 /* Only underline and grey for project detail links */
 .project-links a, .project-description a {
   color: #666 !important;
@@ -5,21 +61,22 @@
 }
 
 /* Menu links and project list titles stay black, no underline */
-.navigation-list a, .project-title, .discography-project-detail .project-title {
-  color: #171717 !important;
-  text-decoration: none !important;
+/* Navigation menu: default black, active/hover grey */
+.navigation-list a {
+  color: #171717;
+  text-decoration: none;
+  transition: color 0.2s;
 }
-* {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-weight: 400;
+.navigation-list a.active,
+.navigation-list a:active,
+.navigation-list a:hover {
+  color: #666 !important;
 }
 /* Force menu font for navigation-list */
-.navigation-list {
-}
-html, body {
-  height: 100vh;
-  overflow: hidden;
-}
+ .navigation-list {
+  font-size: 20px;
+ }
+
 /* Ensure sticky sidebar sticks to top of layout container */
 .layout-container {
   position: relative;
@@ -49,14 +106,16 @@ html, body {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1000; /* ensure above nav/sidebar */
   background: #fff;
-  padding: 0 0 12px 0;
+  padding: 0 0 4px 0;
+  margin: 0;
+  /* font-family and font-size set below */
 }
 .main-content {
   /* flex: 1 removed to prevent extra height and scrolling */
   padding-left: 0;
-  margin-left: 120px;
+  margin-left: 110px;
   max-width: 700px;
   width: 100%;
   box-sizing: border-box;
@@ -84,6 +143,13 @@ html, body {
   padding-top: 0 !important;
 }
 @font-face {
+  font-family: 'neue-haas-grotesk-display-pro-55-roman';
+  src: url('/fonts/neue-haas-grotesk-display-pro-55-roman.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: 'Neue Haas Grotesk Display Pro Light';
   src: url('/fonts/neue-haas-grotesk-display-pro-45-light.ttf') format('truetype');
   font-weight: 300;
@@ -99,14 +165,25 @@ html, body {
 }
 
 body, html, .navigation-sidebar, .main-content, .project-artwork-simple, .project-title, .project-subtitle, .project-year, .contact-container, .score-text-content, .project-artwork-detail, .project-artwork-img, .project-item, .menu, .menu-item {
+  font-family: 'neue-haas-grotesk-display-pro-55-roman', Arial, Helvetica, sans-serif;
 }
 
 /* Exclude header from global font override */
-.sticky-header h1, .sticky-header {
+.sticky-header h1 {
+  font-family: 'Luminari, fantasy';
+  font-size: 17px;
+  font-weight: 500;
+  color: #171717;
+  letter-spacing: -0.02em;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  display: block;
 }
+
+/* Mobile override for sticky-header is in mobile.css */
+
 .project-artwork-simple {
-  width: 150px;
-  height: 150px;
   font-size: 14px;
   overflow: hidden;
   flex-shrink: 0;
@@ -114,6 +191,7 @@ body, html, .navigation-sidebar, .main-content, .project-artwork-simple, .projec
   background: none;
   margin: 0 auto;
 }
+
 
 .project-artwork-simple img {
   display: block;
@@ -148,13 +226,15 @@ body.flex.min-h-screen.flex-col {
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 101;
+  z-index: 900; /* below header, above main */
   background: #fff;
   width: 120px;
   min-width: 100px;
   max-width: 140px;
   margin-bottom: 0;
   padding-left: 0;
-  margin-top: 0 !important;
-  padding-top: 0 !important;
+  margin-top: 0;
+  padding-top: 0;
+  /* font, font-size, etc. unchanged */
+  /* Mobile override in mobile.css */
 }

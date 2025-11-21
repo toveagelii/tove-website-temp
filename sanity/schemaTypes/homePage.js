@@ -17,15 +17,15 @@ export default {
       rows: 6,
       description: "The intro/about text displayed on the homepage."
     },
-    {
-      name: "headerBackgroundImage",
-      title: "Header Background Image",
-      type: "image",
-      description: "Image that appears behind the 'Tove Agelii' header text. Will be sized to match the text dimensions.",
-      options: {
-        hotspot: true
-      }
-    },
+      {
+        name: "headerBackgroundImage",
+        title: "Header Background Image",
+        type: "image",
+        description: "Image that appears behind the 'Tove Agelii' header text. Will be sized to match the text dimensions.",
+        options: {
+          hotspot: true
+        }
+      },
     {
       name: "instagramUrl",
       title: "Instagram URL",

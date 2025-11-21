@@ -37,76 +37,47 @@ export default async function ProjectDetailPage({
   }
 
   return (
-    <div className="content-aligned project-detail-container">
-      {/* No artwork at top, only video */}
-      {/* Uploaded Videos Section */}
+    <div className="content-aligned score-project-detail" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: 0 }}>
+      {/* Video or artwork at top */}
       {project.videos && project.videos.length > 0 && (
-        <div style={{ marginBottom: "24px" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            {project.videos.map((video: any, index: number) => {
-              if (!video.videoFile?.asset?.url) return null;
-
-              // Request a 2x retina thumbnail (500 CSS px -> 1000 actual px) and auto-format for sharpness
-              const thumbnailUrl = video.thumbnail
-                ? urlFor(video.thumbnail).width(1000).auto("format").quality(90).url()
-                : undefined;
-
-              return (
-                <video
-                  key={index}
-                  controls
-                  poster={thumbnailUrl}
-                  className="score-video"
-                  style={{
-                    width: "500px",
-                    maxWidth: "100%",
-                    height: "auto",
-                    display: "block",
-                  }}
-                >
-                  <source src={video.videoFile.asset.url} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              );
-            })}
-          </div>
+        <div className="project-artwork-simple" style={{ marginBottom: '16px', marginLeft: 0, width: '600px', height: 'auto' }}>
+          {project.videos.map((video: any, index: number) => {
+            if (!video.videoFile?.asset?.url) return null;
+            const thumbnailUrl = video.thumbnail
+              ? urlFor(video.thumbnail).width(1000).auto("format").quality(90).url()
+              : undefined;
+            return (
+              <video
+                key={index}
+                controls
+                poster={thumbnailUrl}
+                className="score-video"
+                style={{ width: '100%', height: 'auto', display: 'block', marginBottom: '8px' }}
+              >
+                <source src={video.videoFile.asset.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            );
+          })}
         </div>
       )}
-
       {/* YouTube Videos Section */}
       {project.youtubeVideos && project.youtubeVideos.length > 0 && (
-        <div style={{ marginBottom: "24px" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+        <div className="project-videos" style={{ width: '600px', marginBottom: '24px' }}>
+          <div className="project-videos-list" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {project.youtubeVideos.map((video: { url: string }, index: number) => {
               const embedUrl = getYouTubeEmbedUrl(video.url);
               if (!embedUrl) return null;
-
               return (
-                <div
-                  key={index}
-                  className="youtube-container"
-                  style={{
-                    position: "relative",
-                    width: "500px",
-                    maxWidth: "100%",
-                    paddingBottom: "281.25px", // 16:9 aspect ratio for 500px width (500 * 9/16 = 281.25)
-                    height: 0,
-                    overflow: "hidden",
-                  }}
-                >
+                <div key={index} className="project-video-container" style={{ width: '100%', height: '338px', position: 'relative' }}>
                   <iframe
                     src={embedUrl}
                     title={`YouTube video ${index + 1}`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                    }}
+                    className="project-video-iframe"
+                    style={{ width: '100%', height: '338px', display: 'block' }}
                   />
                 </div>
               );
@@ -114,71 +85,43 @@ export default async function ProjectDetailPage({
           </div>
         </div>
       )}
-
-      {/* Project Title */}
-      <h1
-        className="score-text-content"
-        style={{
-          fontSize: "13px",
-          fontFamily: "'Neue Haas Grotesk Display Pro 45 Light', Arial, Helvetica, sans-serif",
-          fontWeight: 300,
-          marginBottom: "8px",
-          maxWidth: "500px",
-        }}
-      >
-        {project.title}
-      </h1>
-
-      {/* Subtitle */}
-      {project.subtitle && (
-        <p
-          className="score-text-content"
-          style={{
-            fontSize: "11px",
-            color: "#666",
-            marginBottom: "16px",
-            fontFamily: "'Neue Haas Grotesk Display Pro 45 Light', Arial, Helvetica, sans-serif",
-            fontWeight: 300,
-            maxWidth: "500px",
-          }}
-        >
-          {project.subtitle}
-        </p>
-      )}
-
+      {/* All text below video/artwork, left-aligned, menu font/size */}
+      <div style={{ width: '600px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        <div style={{ fontSize: '12px', fontFamily: "neue-haas-grotesk-display-pro-55-roman, Arial, Helvetica, sans-serif", margin: 0, marginBottom: '4px', color: '#171717' }}>{project.title}</div>
+        {project.subtitle && (
+          <div style={{ fontSize: '11px', color: '#666', margin: 0, marginBottom: '4px', fontFamily: "neue-haas-grotesk-display-pro-55-roman, Arial, Helvetica, sans-serif" }}>{project.subtitle}</div>
+        )}
+        {project.year && (
+          <div style={{ fontSize: '10px', color: '#555', margin: 0, marginBottom: '8px', fontFamily: "neue-haas-grotesk-display-pro-55-roman, Arial, Helvetica, sans-serif" }}>{project.year}</div>
+        )}
+      </div>
       {/* Description */}
       {project.description && (
-        <p
-          className="score-text-content"
-          style={{
-            fontSize: "11px", // match subtitle size
-            fontFamily: 'Arial, Helvetica, sans-serif',
-            color: "#666",
-            lineHeight: "1.6",
-            marginBottom: "32px",
-            whiteSpace: "pre-wrap",
-            maxWidth: "500px",
-          }}
+        <div
+          className="project-description"
+          style={{ width: '600px', fontSize: '11px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 400, color: '#666', margin: '0 0 24px 0', whiteSpace: 'pre-line', display: 'block' }}
         >
           {project.description}
-        </p>
+        </div>
       )}
-
       {/* Links */}
       {project.links && project.links.length > 0 && (
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "24px" }}>
+        <div className="project-links" style={{ width: '600px', display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '24px' }}>
           {project.links.map((link: { title: string; url: string }, index: number) => (
             <a
               key={index}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="score-text-content"
+              className="project-link"
               style={{
-                fontSize: "11px",
-                textDecoration: "underline",
-                maxWidth: "500px",
-                display: "inline-block",
+                fontSize: '11px',
+                color: '#666',
+                textDecoration: 'underline',
+                fontFamily: 'Arial, Helvetica, sans-serif',
+                fontWeight: 400,
+                display: 'block',
+                width: '100%'
               }}
             >
               {link.title || link.url}

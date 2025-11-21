@@ -25,7 +25,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col">
-        <header className="sticky-header pt-0 pr-8 pb-2 pl-[20px] bg-white z-10">
+        <header className="sticky-header pt-0 pr-8 pb-0 pl-[20px] bg-white z-10">
           <Link href="/" className="inline-block mb-1">
             <div style={{ position: 'relative', display: 'inline-block', lineHeight: 1 }}>
               {headerBgImage && (
@@ -33,24 +33,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   src={urlFor(headerBgImage).url()}
                   alt=""
                   fill
-                  style={{
-                    objectFit: 'fill',
-                    objectPosition: 'center',
-                    zIndex: 0,
-                    top: '-2px',
-                    left: '1px'
-                  }}
-                  priority
-                  sizes="400px"
+                  style={{ objectFit: 'cover', zIndex: 0 }}
                 />
               )}
               <h1
-                className="text-3xl tracking-tight"
-                style={{ 
-                  fontFamily: "'Neue Haas Grotesk', sans-serif", 
+                style={{
+                  fontFamily: 'Luminari, fantasy',
+                  fontSize: '17px',
                   fontWeight: 500,
                   color: '#171717',
-                  fontSize: '1.5rem', 
                   letterSpacing: '-0.02em',
                   position: 'relative',
                   zIndex: 1,

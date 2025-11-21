@@ -12,7 +12,7 @@ const ProjectContent = ({ project, isClickable }) => {
         display: "flex",
         alignItems: "flex-start",
         gap: "20px",
-        marginBottom: "20px",
+  marginBottom: "40px",
         cursor: isClickable ? "pointer" : "default",
         transition: "opacity 0.2s ease",
       }}
@@ -39,11 +39,11 @@ const ProjectContent = ({ project, isClickable }) => {
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start" }}>
-        <div style={{ fontSize: "12px", fontFamily: "'Neue Haas Grotesk', sans-serif" }}>
+        <div style={{ fontSize: "12px", fontFamily: "neue-haas-grotesk-display-pro-55-roman, Arial, Helvetica, sans-serif" }}>
           {project.title}
         </div>
         {project.subtitle && (
-          <div style={{ fontSize: "11px", color: "#666", marginTop: "4px" }}>
+          <div style={{ fontSize: "11px", color: "#666", marginTop: "4px", fontFamily: "neue-haas-grotesk-display-pro-55-roman, Arial, Helvetica, sans-serif" }}>
             {project.subtitle}
           </div>
         )}
