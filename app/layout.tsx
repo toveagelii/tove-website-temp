@@ -25,7 +25,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col">
-        <header className="sticky-header pt-0 pr-8 pb-0 pl-[20px] bg-white z-10">
+  <header className="sticky-header pt-2 pr-8 pb-0 pl-[20px] bg-white z-10">
           <Link href="/" className="inline-block mb-1">
             <div style={{ position: 'relative', display: 'inline-block', lineHeight: 1 }}>
               {headerBgImage && (
